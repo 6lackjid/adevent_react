@@ -71,7 +71,7 @@ export const fetchAsynUpdateEvent = createAsyncThunk(
 export const fetchAsyncGetMyAccount = createAsyncThunk(
   "myaccont/get",
   async () => {
-    const res = await axios.get(`${apiUrl}api/myaccount/`, {
+    const res = await axios.get(`${apiUrl}api/myaccount/display`, {
       headers: {
         Authorization: `JWT ${localStorage.localJWT}`,
       },
@@ -142,17 +142,17 @@ export const authSlice = createSlice({
         over_view: "",
       },
     ],
-    events: [
-      {
-        id: 0,
-        jenre: "",
-        title: "",
-        eventpics: "",
-        time: "",
-        location: "",
-        over_view: "",
-      },
-    ],
+    // events: [
+    //   {
+    //     id: 0,
+    //     jenre: "",
+    //     title: "",
+    //     eventpics: "",
+    //     time: "",
+    //     location: "",
+    //     over_view: "",
+    //   },
+    // ],
   },
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
@@ -197,7 +197,7 @@ export const authSlice = createSlice({
     });
     builder.addCase(fetchAsynUpdateEvent.fulfilled, (state, action) => {
       state.event = action.payload;
-      state.events = state.events.map((eve) =>
+      state.event = state.event.map((eve) =>
         eve.id === action.payload.id ? action.payload : eve
       );
     });
