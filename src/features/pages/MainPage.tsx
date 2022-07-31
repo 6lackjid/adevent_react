@@ -4,7 +4,8 @@ import styles from "./MainPage.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch } from "../../app/store";
 import { withStyles } from "@material-ui/core/styles";
-import Avatar from "@mui/material/Avatar";
+
+import Avatar from '@mui/material/Avatar';
 import {
   //   Button,
   Grid,
@@ -140,7 +141,7 @@ const MainPage: React.FC = () => {
                 .slice(0)
                 .reverse()
                 .map((event) => (
-                    <Grid key={event.user_id} item xs={12} md={4}>
+                    <Grid key={events.user_id} item xs={12} md={4}>
                         <Event
                         EventId={event.id}
                         Title={event.title}
